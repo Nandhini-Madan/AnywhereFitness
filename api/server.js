@@ -19,7 +19,7 @@ server.use(express.json())
 // endpoint
 server.use("/api/auth", authRouter);
 server.use("/api/client",restricted, clientRouter);
-server.use("/api/instructor",checkRole('instructor'), instructorRouter);
+server.use("/api/instructor",restricted,checkRole('instructor'), instructorRouter);
 
 server.get("/", (req, res) => {
     res.status(200).json({ message: "API is working " });

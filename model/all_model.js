@@ -74,13 +74,13 @@ function getSessionById(id) {
         'sessions.users_id', 
         'sessions.classes_id', 
         'classes.name', 
-        'classes.instruclassestor_id', 
+        'classes.instructor_id', 
         'classes.type',
         'classes.start_time',
         'classes.duration',
         'classes.intensity', 
         'classes.location', 
-        'c.max_class')
+        'classes.max_class')
     .join('classes ', 'sessions.classes_id', 'classes.id')
     .where('sessions.id', id)
     .first()

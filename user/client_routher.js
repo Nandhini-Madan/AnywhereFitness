@@ -25,12 +25,13 @@ router.post("/classes/sessions", (req, res) => {
   } else {
     db.addSession(newSession)
       .then((addedSession) => {
-        res.status(201).json({ addedSession, 
-            message: "New session added" });
+        res.status(201).json({ addedSession, message: "New session added" });
       })
       .catch((err) => {
-        res.status(500).json({ 
-              Message: "please try again", err });
+        res.status(500).json({
+          Message: "please try again",
+          err,
+        });
       });
   }
 });
@@ -43,14 +44,16 @@ router.get("/classes/sessions", (req, res) => {
       res.status(200).json({ classes, message: "all classes for logged user" });
     })
     .catch((err) => {
-      res.status(500).json({ 
-          Message: "could not get data please try again" });
+      res.status(500).json({
+        Message: "could not get data please try again",
+      });
     });
 });
 
 // why is it not working?
 router.get("/classes/sessions/:id", (req, res) => {
   let { id } = req.params;
+  console.log(req.params);
   let userID = req.jwt.subject;
   db.getSessionById(id)
     .then((session) => {
@@ -58,12 +61,15 @@ router.get("/classes/sessions/:id", (req, res) => {
         res.status(200).json({ session, message: "Session for logged user" });
       } else {
         res.status(404).json({
-             message: "no session found for current logged user" });
+          message: "no session found for current logged user",
+        });
       }
     })
     .catch((err) => {
-      res.status(500).json({ 
-          Message: " could not get data please try again" });
+      console.log(err);
+      res.status(500).json({
+        Message: " could not get data please try again",
+      });
     });
 });
 
@@ -90,12 +96,13 @@ router.delete("/classes/sessions/:id", (req, res) => {
   let userID = req.jwt.subject;
   db.getSessionById(id)
     .then((session) => {
-       console.log(session)
-        console.log(session.users_id)
+      console.log(session);
+      console.log(session.users_id);
       if (session.users_id === userID) {
         db.removeSessionById(id).then((count) => {
           if (count > 0) {
-            res.status(200)
+            res
+              .status(200)
               .json({ message: `successfully deleted session with id ${id}` });
           } else {
             res
@@ -110,7 +117,9 @@ router.delete("/classes/sessions/:id", (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(500).json({ errMessage: "Internal error, could not get data"});
+      res
+        .status(500)
+        .json({ errMessage: "Internal error, could not get data" });
     });
 });
 
@@ -132,25 +141,40 @@ router.put("/classes/sessions/:id", (req, res) => {
                       res.status(200).json({
                         success: `successfully updated session ${id}`,
                         updated: updatedSession,
-                      });})
+                      });
+                    })
                     .catch((err) => {
-                res.status(500).json({ errMessage:"Internal server error finding updated session",});
+                      res
+                        .status(500)
+                        .json({ errMessage: "server error please try again" });
                     });
                 } else {
-                  res.status(400).json({ errMessage: "Could not update class" });
-                }})
+                  res
+                    .status(400)
+                    .json({ errMessage: "Could not update class" });
+                }
+              })
               .catch((err) => {
-                res.status(500).json({ errMessage: "Internal server error updating class" });
+                res
+                  .status(500)
+                  .json({ errMessage: "server error please try again" });
               });
           } else {
             res.status(401).json({
-              errMessage: "Not authorized, this session is not assigned to this client",
-            });}
+              errMessage:
+                "Not authorized, this session is not assigned to this client",
+            });
+          }
         } else {
-          res.status(404).json({ errMessage: "No session found with requested id" });
-        }})
+          res
+            .status(404)
+            .json({ errMessage: "No session found with requested id" });
+        }
+      })
       .catch((err) => {
-        res.status(500).json({ errMessage: "Internal server error finding session" });
+        res
+          .status(500)
+          .json({ errMessage: "Internal server error finding session" });
       });
   } else {
     res.status(400).json({ message: "classes id is required" });

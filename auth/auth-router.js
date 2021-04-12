@@ -53,10 +53,19 @@ router.post('/login', (req, res) => {
   }
 });
 
-// router.get('/logout',  async (req, res) => {
-//   await res.clearCookie('token').end();
-//   // return res.status(OK).end();
-// });
+router.get("/logout", async (req, res, next) => {
+	try {
+	req.session.destroy((err) => {
+			if (err) {
+				next(err)
+			} else {
+				res.status(204).end()
+			}
+		})
+	} catch (err) {
+		next(err)
+	}
+})
 
 
 module.exports = router;
