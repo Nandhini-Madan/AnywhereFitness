@@ -3,6 +3,7 @@ let constant = require("../configjw/constants");
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
+  
  let secret = constant.jwtSecret;
 
   if (token) {

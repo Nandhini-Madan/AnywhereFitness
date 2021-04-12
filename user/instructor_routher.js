@@ -1,8 +1,7 @@
 let express = require("express");
 let router = express.Router();
-const {checkInstructor} = require('../auth/check_role');
 const db = require("../model/all_model")
-router.use(checkInstructor)
+
 
 router.get("/classes", (req, res) => {
     let subject = req.jwt.subject;

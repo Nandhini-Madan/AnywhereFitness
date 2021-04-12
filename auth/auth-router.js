@@ -53,7 +53,7 @@ router.post('/login', (req, res) => {
   }
 });
 
-// router.get('/logout', validateToken(), async (req, res) => {
+// router.get('/logout',  async (req, res) => {
 //   await res.clearCookie('token').end();
 //   // return res.status(OK).end();
 // });
