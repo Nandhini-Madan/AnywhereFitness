@@ -10,9 +10,9 @@ GET: /api/auth/
 POST: 
 /api/auth/register
 /api/auth/login
-/api/auth/logout
+
 ````
-# client Router
+# Client Router
 ````
 GET:/api/client/classes
 GET:/api/client/classes/:id
@@ -23,7 +23,11 @@ PUT:/api/client/classes/sessions/:id
 DELETE:/api/client/classes/sessions/:id
 ````
 
-# instructor Router
+# Instructor Router
 ````
-/api/instructor
+GET:/api/instructor/classes
+GET:/api/instructor/classes/:id
+POST:/api/instructor/classes
+PUT:/api/instructor/classes/:id
+DELETE:/api/instructor/classes/:id
 ````
