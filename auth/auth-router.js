@@ -25,6 +25,7 @@ console.log(req.body)
                 res.status(201).json({ data: user, message: "role: 1=instructor 2=client" });
             })
             .catch(error => {
+              console.log(error)
                 res.status(500).json({ message: "Credentials must be unique", error });
             });
     } else {
