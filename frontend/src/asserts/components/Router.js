@@ -6,8 +6,7 @@ const Route=()=>{
         <>
         <Switch>
             <Route exact path="/">
-                <App/>
-                
+                <App/>   
             </Route>
             <Route path="/login">
                 <Login/>
