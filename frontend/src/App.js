@@ -3,68 +3,85 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import fitness1 from "../src/asserts/fitness1.jpg";
 import fitness2 from "../src/asserts/fitness2.jpg";
 import fitness3 from "../src/asserts/fitness3.jpg";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+import Carousel from 'react-bootstrap/Carousel';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { NavDropdown,Button,Form,FormControl } from 'react-bootstrap';
 function App() {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="">AnywhereFitness</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="#">Login</a>
-              <a className="nav-link" href="">Register</a>
-              <a className="nav-link" href="">classes</a>
-              <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
-            </div>
-          </div>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src={fitness1} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src={fitness2} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src={fitness3} class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+      
+      <Navbar bg="light" expand="lg">
+  <Navbar.Brand href="#">Anywhere Fitness</Navbar.Brand>
+  <Navbar.Toggle aria-controls="navbarScroll" />
+  <Navbar.Collapse id="navbarScroll">
+    <Nav
+      className="mr-auto my-2 my-lg-0"
+      style={{ maxHeight: '100px' }}
+      navbarScroll
+    >
+      <Nav.Link href="#action1">Home</Nav.Link>
+      <Nav.Link href="#action2">Login</Nav.Link>
+      <NavDropdown title="Link" id="navbarScrollingDropdown">
+        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+        <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
+      </NavDropdown>
+      <Nav.Link href="#" >
+        classes
+      </Nav.Link>
+    </Nav>
+    <Form className="d-flex">
+      <FormControl
+        type="search"
+        placeholder="Search"
+        className="mr-2"
+        aria-label="Search"
+      />
+      <Button variant="outline-success">Search</Button>
+    </Form>
+  </Navbar.Collapse>
+</Navbar>
+      <Carousel>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={fitness1}
+      alt="First slide"
+    />
+    <Carousel.Caption>
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={fitness2}
+      alt="Second slide"
+    />
+
+    <Carousel.Caption>
+      <h3>Second slide label</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={fitness3}
+      alt="Third slide"
+    />
+
+    <Carousel.Caption>
+      <h3>Third slide label</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
       <br></br>
       <div class="container marketing">
 
@@ -76,7 +93,7 @@ function App() {
 
             <h2>Heading</h2>
             <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="..">View details »</a></p>
           </div>
           {//<!-- /.col-lg-4 -->
           }
@@ -85,7 +102,7 @@ function App() {
 
             <h2>Heading</h2>
             <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="..">View details »</a></p>
           </div>
           {//<!-- /.col-lg-4 -->
           }
@@ -94,7 +111,7 @@ function App() {
 
             <h2>Heading</h2>
             <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="..">View details »</a></p>
           </div>
           {//</div><!-- /.col-lg-4 -->
           }
