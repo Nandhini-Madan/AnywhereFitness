@@ -1,7 +1,8 @@
 import React from "react";
 import { Route,Switch } from "react-router-dom";
 import App from "App.js";
-const Route=()=>{
+import Login from "./Login";
+const RouteFile=()=>{
     return(
         <>
         <Switch>
@@ -25,3 +26,5 @@ const Route=()=>{
         </>
     )
 }
+
+export default RouteFile;

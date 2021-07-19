@@ -50,3 +50,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+.carousel-caption{
+  color:black;
+}
