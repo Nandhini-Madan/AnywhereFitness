@@ -1,6 +1,6 @@
 import React from "react";
-import { Route,Switch } from "react-router-dom";
-import App from "App.js";
+import { Route, Switch } from "react-router-dom";
+import App from "/Users/Nandhini M/AnywhereFitness/Anywhere-Fit-BE/frontend/src/App";
 import Login from "./Login";
 const RouteFile=()=>{
     return(
