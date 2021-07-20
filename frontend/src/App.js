@@ -18,6 +18,7 @@ function App() {
   return (
     <div>
       <Navbar bg="light" expand="lg">
+
         <Navbar.Brand href="#">Anywhere Fitness</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -54,6 +55,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signUp" component={SignUp}/>
       </Switch>
+
 
       
       <div className="Footer">
