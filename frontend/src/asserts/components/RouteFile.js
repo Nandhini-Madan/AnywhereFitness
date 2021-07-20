@@ -12,16 +12,7 @@ const RouteFile=()=>{
             <Route path="/login">
                 <Login/>
             </Route>
-            <Route path="/register">
-                <Register/>
-            </Route>
-            <Route path="/classes">
-                <Classes/> 
-            </Route>
-            <Route path="/instructors">
-                <Instructors/>
-
-            </Route>
+           
         </Switch>
         </>
     )

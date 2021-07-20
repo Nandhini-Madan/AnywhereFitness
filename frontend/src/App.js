@@ -11,13 +11,15 @@ import './App.scss';
 import Carousel from 'react-bootstrap/Carousel';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {  Button, Form, FormControl } from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
-import RouteFile from './asserts/components/RouteFile';
+import { Button, Form, FormControl } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link, Switch, Route } from "react-router-dom";
+
+import Login from "../src/asserts/components/Login";
+
 function App() {
   return (
     <div>
-
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#">Anywhere Fitness</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -28,16 +30,17 @@ function App() {
             navbarScroll
           >
             <LinkContainer to="/login">
-      <Nav.Link>Service</Nav.Link>
-      </LinkContainer>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="#action2">Sign Up</Nav.Link>
-            <Nav.Link href="#" >
+              <Nav.Link>login</Nav.Link>
+            </LinkContainer>
+            <Link to="/" className="nav-link" aria-current="page">Home</Link>
+            <Link to="/login" className="nav-link" aria-current="page">Login</Link>
+            <Nav.Link to="#action2">Sign Up</Nav.Link>
+            <Nav.Link to="#" >
               classes
             </Nav.Link>
           </Nav>
-          
+
+
           <Form className="d-flex">
             <FormControl
               type="search"
@@ -49,10 +52,15 @@ function App() {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      <Carousel>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/login" component={Login} />
+      </Switch>
+
+      <Carousel >
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="a-block w-75"
             src={fitness1}
             alt="First slide"
           />
@@ -63,9 +71,10 @@ function App() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="b-block w-75"
             src={fitness2}
             alt="Second slide"
+            style={{ width: "500px" }}
           />
 
           <Carousel.Caption>
@@ -75,7 +84,7 @@ function App() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="c-block w-75"
             src={fitness3}
             alt="Third slide"
           />
@@ -120,12 +129,6 @@ function App() {
           {//</div><!-- /.col-lg-4 -->
           }
         </div>
-        {
-          //<!-- /.row -->
-        }
-
-        {//<!-- START THE FEATURETTES -->
-        }
 
 
         <hr class="featurette-divider"></hr>
