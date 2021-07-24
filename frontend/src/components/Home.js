@@ -12,7 +12,7 @@ const Home=()=>{
         <Carousel >
         <Carousel.Item>
           <img
-            className="a-block w-75"
+            className="a-block w-100"
             src={fitness1}
             alt="First slide"
           />
@@ -23,7 +23,7 @@ const Home=()=>{
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="b-block w-75"
+            className="b-block w-100"
             src={fitness2}
             alt="Second slide"
             style={{ width: "500px" }}
@@ -36,7 +36,7 @@ const Home=()=>{
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="c-block w-75"
+            className="c-block w-100"
             src={fitness3}
             alt="Third slide"
           />
