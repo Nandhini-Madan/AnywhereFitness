@@ -9,6 +9,7 @@ import { Link, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Home from './components/Home';
 import SignUp from './components/SignUp';
+import Classes from "./components/Classes";
 
 function App() {
   return (
