@@ -33,17 +33,18 @@ const Login = (props) => {
                 setButtonDisabled(false)
             }
 
-    },[loginState])
+    },[loginState,formschema])
 
     const loginSubmit=(e)=>{
-        e.preventDefault();
+        console.log("login");
+      //  e.preventDefault();
 
-        axiosWithAuth().post('https://anywherefitbe.herokuapp.com/api/auth/login',loginState,{withCredentials:true})
+        axiosWithAuth().post('http://localhost:5000/api/auth/login',loginState)
 
         .then(res=>{
             console.log("LoginState",res)
             localStorage.setItem('token',"secret");
-            props.setLoggedIn(true);
+           // props.setLoggedIn(true);
             history.push("/Instructor")
         })
         .catch(err=>{
@@ -52,26 +53,38 @@ const Login = (props) => {
         })
     }
     const inputchange=(e)=>{
-        e.persist();
+     //   e.persist();
+     console.log("hihi")
         const value=e.target.value;
         yup.reach(formschema,e.target.name)
         .validate(value)
         .then(valid=>{
+            console.log("dfdf",valid)
             setError({...Error,[e.target.name]:""})
         })
-        setLoginState({
-            ...loginState,
-            [e.target.name]:e.target.value
-        })
+       
+        .catch(
+            err=>{
+                console.log("previous",err.errors[0])
+                setError({
+                    ...Error,[e.target.name]:err.errors[0]
+                })
+            })
+
+            setLoginState({
+                ...loginState,
+                [e.target.name]:e.target.value
+            })
+            console.log(loginState);
     }
     
     return (
         <>
             <Form onSubmit={loginSubmit}>
-                 <Input  type="text" placeholder="User Name" onChange={inputchange} value={loginState.username} name="username" label="User Name" errors={Error}/>
+                 <Input  type="text" placeholder="User Name1" onChange={inputchange} value={loginState.username} name="username" label="User Name" errors={Error}/>
                  <Input  type="password" placeholder="Password" onChange={inputchange} value={loginState.password} name="password" label="Password" errors={Error}/>
                
-                <Button  type="submit" disabled={buttonDisabled} >
+                <Button onClick={loginSubmit}  >
                     Submit
                 </Button>
             </Form>

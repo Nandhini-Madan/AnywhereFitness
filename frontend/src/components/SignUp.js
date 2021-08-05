@@ -23,7 +23,7 @@ const SignUp = () => {
     }
 // Validation Form
 const formSchema=yup.object().shape({
-    role:yup.string().notRequired(),
+  //  role:yup.string().notRequired(),
     first_name:yup.string().required("Please Enter Your First Name").min(2,"This is not your first name"),
     last_name:yup.string().required("Please Enter Your Last Name").min(2,"This is not your last name"),
     username:yup.string().required("Please Enter your Username").min(2,"This is not your Username"),
@@ -77,10 +77,11 @@ const formSchema=yup.object().shape({
         console.log("submit")
         event.preventDefault();
         console.log("Data signup form",formState);
-        axios.post("https://anywherefitbe.herokuapp.com/api/auth/register",formState)
+       // if(formState.first_name||formState.last_name)
+        axios.post("http://localhost:5000/api/auth/register",formState)
             .then(res=>{
                 //After posting the data what kind of response we are getting 
-                console.log(res)
+                console.log(res,"signup")
                 history.push("/login")
             })
             .catch(err=>{
@@ -105,21 +106,21 @@ const formSchema=yup.object().shape({
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Check
-                                defaultChecked="1"
+                                defaultChecked
                                 type="radio"
                                 label="Student"
                                 name="role"
                                 id="formHorizontalRadios1"
-                                onChange={inputchange}
-                                value={2}
+                             //   onChange={inputchange}
+                              //  value={2}
                             />
                             <Form.Check
                                 type="radio"
                                 label="Instructor"
                                 name="role"
                                 id="formHorizontalRadios2"
-                                value={1}
-                                onChange={inputchange}
+                             //   value={1}
+                             //   onChange={inputchange}
                             />
                            
                         </Col>
