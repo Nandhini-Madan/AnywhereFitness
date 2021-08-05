@@ -18,18 +18,18 @@ const SignUp = () => {
         username:"",
         password:"",
         role:1,
-        terms:false
+      
 
     }
 // Validation Form
 const formSchema=yup.object().shape({
-    role:yup.string().notRequired(),
+  //  role:yup.string().notRequired(),
     first_name:yup.string().required("Please Enter Your First Name").min(2,"This is not your first name"),
     last_name:yup.string().required("Please Enter Your Last Name").min(2,"This is not your last name"),
     username:yup.string().required("Please Enter your Username").min(2,"This is not your Username"),
     password:yup.string().required("Please Enter the password").matches( /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,"Password must contain at least 8 characters , one uppercase , one lowercase , one number and one special case character"),
     email:yup.string().email().required("Please Enter email"),
-    terms: yup.boolean().oneOf([true],'Please accept our terms')
+  //  terms: yup.boolean().oneOf([true],'Please accept our terms')
 })
     const [formState,setFormState]=useState(defaultState);
     const [Error,setError]=useState({...defaultState,terms:""});
@@ -77,10 +77,11 @@ const formSchema=yup.object().shape({
         console.log("submit")
         event.preventDefault();
         console.log("Data signup form",formState);
-        axios.post("https://anywherefitbe.herokuapp.com/api/auth/register",formState,{withCreditials:true})
+       // if(formState.first_name||formState.last_name)
+        axios.post("http://localhost:5000/api/auth/register",formState)
             .then(res=>{
                 //After posting the data what kind of response we are getting 
-                console.log(res)
+                console.log(res,"signup")
                 history.push("/login")
             })
             .catch(err=>{
@@ -94,7 +95,7 @@ const formSchema=yup.object().shape({
             <Form onSubmit={submitForm} >
                
             <Input  type="text" placeholder="First Name" onChange={inputchange} value={formState.first_name} name="first_name" label="First Name" errors={Error}/> 
-            <Input  type="text" placeholder="Last Name" onChange={inputchange} value={formState.last_name_name} name="last_name" label="Last Name" errors={Error}/>
+            <Input  type="text" placeholder="Last Name" onChange={inputchange} value={formState.last_name} name="last_name" label="Last Name" errors={Error}/>
             <Input  type="text" placeholder="User Name" onChange={inputchange} value={formState.username} name="username" label="User Name" errors={Error}/>
             <Input  type="email" placeholder="Email" onChange={inputchange} value={formState.email} name="email" label="Email" errors={Error}/>
             <Input  type="password" placeholder="Password" onChange={inputchange} value={formState.password} name="password" label="Password" errors={Error}/>
@@ -105,36 +106,31 @@ const formSchema=yup.object().shape({
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Check
-                                defaultChecked="1"
+                                defaultChecked
                                 type="radio"
                                 label="Student"
                                 name="role"
                                 id="formHorizontalRadios1"
-                                onChange={inputchange}
-                                value="1"
+                             //   onChange={inputchange}
+                              //  value={2}
                             />
                             <Form.Check
                                 type="radio"
                                 label="Instructor"
                                 name="role"
                                 id="formHorizontalRadios2"
-                                value="2"
-                                onChange={inputchange}
+                             //   value={1}
+                             //   onChange={inputchange}
                             />
                            
                         </Col>
                     </Form.Group>
                 </fieldset>
-                <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
-                    <Col sm={{ span: 10, offset: 2 }}>
-                        <Form.Check label="Terms and Conditions" type="checkbox" checked={formState.terms} name="terms" onChange={inputchange} errors={Error} />
-                        <>{Error.terms.length !== 0 && <p className="error">{Error.terms}</p>}</>
-                    </Col>
-                </Form.Group>
+               
 
                 <Form.Group as={Row} className="mb-3">
                     <Col sm={{ span: 10, offset: 2 }}>
-                        <Button type="submit"  disabled={disabledButton} >Sign in</Button>
+                        <Button type="submit"  disabled={disabledButton} >Sign up</Button>
                     </Col>
                 </Form.Group>
             </Form>
