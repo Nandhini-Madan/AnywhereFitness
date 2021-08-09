@@ -44,8 +44,15 @@ const Login = (props) => {
         .then(res=>{
             console.log("LoginState",res)
             localStorage.setItem('token',"secret");
+            if(res.data.role==="client"){
+                history.push("/classes")
+            }
+            else{
+                console.log("instructor")
+                history.push("/classes")
+            }
            // props.setLoggedIn(true);
-            history.push("/Instructor")
+            
         })
         .catch(err=>{
             console.log("Error message",err)
