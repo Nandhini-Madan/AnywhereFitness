@@ -4,17 +4,13 @@ import * as yup from 'yup';
 import Input from "./Input";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router';
-
-
-
+import axios from 'axios';
 const Login = (props) => {
     let history =useHistory();
-
     const defaultState={
         username:"",
         password:""
     };
-
     const [Error,setError]=useState({...defaultState});
     const [loginState,setLoginState]=useState(defaultState);
     const [buttonDisabled,setButtonDisabled]=useState(true);
@@ -36,20 +32,21 @@ const Login = (props) => {
     },[loginState,formschema])
 
     const loginSubmit=(e)=>{
-        console.log("login");
+        console.log("login",loginState);
       //  e.preventDefault();
 
-        axiosWithAuth().post('http://localhost:5000/api/auth/login',loginState)
+        axios.post('http://localhost:5000/api/auth/login',loginState)
 
         .then(res=>{
             console.log("LoginState",res)
-            localStorage.setItem('token',"secret");
+            localStorage.setItem('token',res.data.token);
            // props.setLoggedIn(true);
-           if(res.data.role==="client"){
-               history.push("/client")
+           if(res.data.role==="instructor"){
+            history.push("/Instructor")
            }
            else{
-            history.push("/Instructor")
+            
+            history.push("/classes")
            }
             
         })

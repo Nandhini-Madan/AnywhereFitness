@@ -3,7 +3,7 @@ import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Card ,Button, Row,Col} from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
-const Classes=()=>{
+const Instructor=()=>{
     const defaultState={
         subject:"",
         first_name:"",
@@ -15,7 +15,7 @@ const Classes=()=>{
     const [message,SetMessage]=useState(defaultState)
     
     useEffect(()=>{
-        axiosWithAuth().get('http://localhost:5000/api/client/classes')
+        axiosWithAuth().get('http://localhost:5000/api/instructor/classes')
         .then(res=>{
             console.log(res.data,"classes")
             setAllClass(res.data.data)
@@ -57,4 +57,4 @@ const Classes=()=>{
         </>
     )
 }
-export default Classes;
+export default Instructor;
