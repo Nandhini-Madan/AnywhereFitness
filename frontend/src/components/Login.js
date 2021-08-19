@@ -46,7 +46,7 @@ const Login = (props) => {
            }
            else{
             
-            history.push("/classes")
+            history.push("/Client")
            }
             
         })

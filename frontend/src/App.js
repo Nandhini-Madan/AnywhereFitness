@@ -11,7 +11,7 @@ import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Instructor from "./components/Instructor";
 import PrivateRoute from './components/PrivateRoute';
-import Classes from './components/Classes';
+import ClientPage from './components/ClientPage';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
             <Link to="/" className="nav-link" aria-current="page">Home</Link>
             <Link to="/login" className="nav-link" aria-current="page">Login</Link>
             <Link to="/signUp" className="nav-link" aria-current="page">SignUp</Link>
-            <Link to="/classes" className="nav-link" aria-current="page" >Classes</Link>
+            
           </Nav>
 
 
@@ -48,7 +48,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signUp" component={SignUp} />
-        <PrivateRoute exact path="/Classes" component={Classes}/>
+        <PrivateRoute exact path="/Client" component={ClientPage}/>
         <PrivateRoute exact path="/Instructor" component={Instructor}/>
 
       </Switch>

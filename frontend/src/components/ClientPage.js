@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Card ,Button, Row,Col} from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
-const Classes=()=>{
+
+const ClientPage=()=>{
     const defaultState={
         subject:"",
         first_name:"",
         location:"",
-        start_time:""
+        start_time:"",
+        role:""
+
+      
       
     }
     const[allclass,setAllClass]=useState([])
@@ -28,16 +31,22 @@ const Classes=()=>{
         )
 
     },[])
+
+    const viewClass=(id)=>{
+        console.log("e0",id)
+
+   
+    }
     return(
         
         <>
-      <h1>Welcome to classes: {message.first_name}</h1>
+      <h1>Welcome to classes:{message.role} {message.first_name}</h1>
       <Row xs={1} md={2} className="g-4">
-      {allclass.map((clientClass=>(
-          <Col>
+      {allclass.map(((clientClass,key)=>(
+        <Col id={key} >
          
-          <Card>
-          <Card.Img variant="top" src={fitness} />
+          <Card  >
+          <Card.Img variant="top" src={fitness}  />
           <Card.Body>
             <Card.Title>Name:{clientClass.name}</Card.Title>
             <Card.Text>
@@ -46,7 +55,7 @@ const Classes=()=>{
             <Card.Text>
              Start Time: {clientClass.start_time}
             </Card.Text>
-            
+            <Button onClick={viewClass(clientClass.id)}> Test</Button>
             <Button variant="primary" >Edit</Button>
             <Button variant="danger">Delete</Button>
           </Card.Body>
@@ -57,4 +66,4 @@ const Classes=()=>{
         </>
     )
 }
-export default Classes;
+export default ClientPage;
