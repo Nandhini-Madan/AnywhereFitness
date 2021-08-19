@@ -17,6 +17,7 @@ function App() {
   return (
     <div>
       <Navbar bg="light" expand="lg">
+
         <Navbar.Brand href="#">Anywhere Fitness</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -52,6 +53,8 @@ function App() {
         <PrivateRoute exact path="/Instructor" component={Instructor}/>
 
       </Switch>
+ 
+
 
 
       <div className="Footer">
