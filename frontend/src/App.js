@@ -12,6 +12,8 @@ import SignUp from './components/SignUp';
 import Instructor from "./components/Instructor";
 import PrivateRoute from './components/PrivateRoute';
 import ClientPage from './components/ClientPage';
+import Clientsessions from './components/ClientSessions';
+import EditSession from './components/EditSessions';
 
 function App() {
   return (
@@ -51,6 +53,9 @@ function App() {
         <Route exact path="/signUp" component={SignUp} />
         <PrivateRoute exact path="/Client" component={ClientPage}/>
         <PrivateRoute exact path="/Instructor" component={Instructor}/>
+        <PrivateRoute exact path="/Clientsessions" component={Clientsessions}/>
+        <PrivateRoute exact path="/Editsessions/:id" component={EditSession}/>
+
 
       </Switch>
  
