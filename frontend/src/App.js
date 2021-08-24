@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute';
 import ClientPage from './components/ClientPage';
 import Clientsessions from './components/ClientSessions';
 import EditSession from './components/EditSessions';
+import CreateClass from './components/CreateClass';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <PrivateRoute exact path="/Instructor" component={Instructor}/>
         <PrivateRoute exact path="/Clientsessions" component={Clientsessions}/>
         <PrivateRoute exact path="/Editsessions/:id" component={EditSession}/>
+        <PrivateRoute exact path="/CreateClass" component={CreateClass}/>
 
 
       </Switch>

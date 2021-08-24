@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
+import { useHistory } from "react-router-dom";
+
 const Instructor = () => {
+    let history=useHistory()
     const defaultState = {
         subject: "",
         first_name: "",
@@ -12,12 +14,12 @@ const Instructor = () => {
 
     }
     const [allclass, setAllClass] = useState([])
-    const [message, SetMessage] = useState(defaultState)
+   // const [message, SetMessage] = useState(defaultState)
 
     useEffect(() => {
         axiosWithAuth().get("http://localhost:5000/api/instructor/classes")
             .then(res => {
-                console.log(res.data.message, "classes")
+                console.log(res.data, "classes")
                 setAllClass(res.data.data)
                 // SetMessage(res.data.jwt)
             })
@@ -28,12 +30,18 @@ const Instructor = () => {
             )
 
     }, [])
+
+    const newClass=()=>{
+        
+        history.push("/CreateClass")
+
+    }
     return (
 
         <>
             <h1>Welcome to classes: </h1>
             <br></br>
-            <Button> Create Class </Button>
+           
             <Row xs={1} md={2} className="g-4">
                 {
 
@@ -63,6 +71,7 @@ const Instructor = () => {
 
 
             </Row>
+            <Button onClick={newClass}> Create Class </Button>
         </>
     )
 }
