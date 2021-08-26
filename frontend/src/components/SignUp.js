@@ -17,7 +17,7 @@ const SignUp = () => {
         email: "",
         username: "",
         password: "",
-        role: 1,
+        role: 2,
 
 
     }
