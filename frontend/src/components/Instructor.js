@@ -1,44 +1,72 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
+import { useHistory } from "react-router-dom";
+
 const Instructor = () => {
+    let history = useHistory()
     const defaultState = {
         subject: "",
         first_name: "",
         location: "",
-        start_time: ""
+        start_time: "",
+        id: ""
 
     }
     const [allclass, setAllClass] = useState([])
-    const [message, SetMessage] = useState(defaultState)
-
-    useEffect(() => {
+    // const [message, SetMessage] = useState(defaultState)
+    const getClass=()=>{
+        console.log("getclass")
         axiosWithAuth().get("http://localhost:5000/api/instructor/classes")
-            .then(res => {
-                console.log(res.data.message, "classes")
-                setAllClass(res.data.data)
-                // SetMessage(res.data.jwt)
-            })
-            .catch(
-                err => {
-                    console.log("error", err)
-                }
-            )
+        .then(res => {
+            console.log(res, "classes")
+            setAllClass(res.data.data)
+            // SetMessage(res.data.jwt)
+        })
+        .catch(
+            err => {
+                console.log("error", err)
+            }
+        )
 
+    }
+    useEffect(() => { getClass()
     }, [])
+
+    const newClass = () => {
+
+        history.push("/CreateClass")
+
+    }
+    const editClass = (id) => {
+        console.log("edit class", id)
+        history.push(`/EditClass/${id}`)
+
+    }
+    const deleteClass=(id)=>{
+        console.log("delete",id)
+        axiosWithAuth().delete(`http://localhost:5000/api/instructor/classes/${id}`)
+        .then(res=>{
+            console.log("res")
+           // history.push("/Instructor")
+          // setAllClass(allclass)
+          getClass()
+        })
+        .catch(err=>{
+            console.log("error")
+        })
+    }
     return (
 
         <>
-            <h1>Welcome to classes: </h1>
+        <br></br>
+            <h1>Welcome Instructor: </h1>
             <br></br>
-            <Button> Create Class </Button>
             <Row xs={1} md={2} className="g-4">
                 {
-
                     allclass.map((clientClass => (
-                        <Col>
+                        <Col key={clientClass.id}>
 
                             <Card>
                                 <Card.Img variant="top" src={fitness} />
@@ -51,18 +79,15 @@ const Instructor = () => {
                                         Start Time: {clientClass.start_time}
                                     </Card.Text>
 
-                                    <Button variant="primary" >Edit</Button>
-                                    <Button variant="danger">Delete</Button>
+                                    <Button variant="primary" onClick={editClass.bind(this, clientClass.id)}>Edit</Button>
+                                    <Button variant="danger" onClick={deleteClass.bind(this,clientClass.id)}>Delete</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
                     )))}
-
-
-
-
-
+                    <Button onClick={newClass}> Create Class </Button>
             </Row>
+        
         </>
     )
 }

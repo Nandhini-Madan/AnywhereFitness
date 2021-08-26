@@ -15,32 +15,38 @@ const Clientsessions = () => {
         max_class: ""
     }
     const [mySessions, setMySessions] = useState([])
+    const getSessions=()=>{
+        axiosWithAuth().get("http://localhost:5000/api/client/classes/sessions")
+        .then(res => {
+            console.log(res.data)
+            setMySessions(res.data.classes)
+        })
+        .catch(err => {
+            console.log("Errror displaying", err)
+        })
+    }
 
     useEffect(() => {
-        axiosWithAuth().get("http://localhost:5000/api/client/classes/sessions")
-            .then(res => {
-                console.log(res.data)
-                setMySessions(res.data.classes)
-            })
-            .catch(err => {
-                console.log("Errror displaying", err)
-            })
-    }, [])
+        getSessions()}
+        , [])
+
     const deleteclass = (id) => {
         console.log("delete", id)
         const sessionID=id
         axiosWithAuth().delete(`http://localhost:5000/api/client/classes/sessions/${sessionID}`)
             .then(res => {
                 console.log("Successfully deleted", res)
+                getSessions()
             })
             .catch(err => {
                 console.log("Error", err)
             })
     }
+    /*
     const EditSession = (id) => {
         console.log("edit",id)
         history.push(`/editSessions/${id}`)
-    }
+    }*/
     return (
         <>
             <h1>My sessions</h1>
@@ -61,9 +67,7 @@ const Clientsessions = () => {
                                 <Card.Text>
                                     Start Time: {mySessions.start_time}
                                 </Card.Text>
-                                <Button variant="primary" onClick={deleteclass.bind(this, mySessions.sessionID)}> Delete</Button>
-                                <Button variant="primary" onClick={EditSession.bind(this,mySessions.sessionID)}>Edit</Button>
-                            </Card.Body>
+                                <Button variant="primary" onClick={deleteclass.bind(this, mySessions.sessionID)}> Delete</Button>                            </Card.Body>
                         </Card>
                     </Col>
                 )))}

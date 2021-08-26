@@ -33,9 +33,6 @@ const ClientPage = () => {
         console.log("error adding class", err)
 
       })
-
-
-
   }
   const MySessions = () => {
        history.push("/Clientsessions")
@@ -78,11 +75,12 @@ const ClientPage = () => {
                   Start Time: {clientClass.start_time}
                 </Card.Text>
                 <Button variant="primary" onClick={viewClass.bind(this, clientClass.id)}> Add</Button>
-                <Button variant="primary" onClick={MySessions}> Test</Button>
+                
               </Card.Body>
             </Card>
           </Col>
         )))}
+        <Button variant="primary" onClick={MySessions}> My Session</Button>
       </Row>
     </>
   )

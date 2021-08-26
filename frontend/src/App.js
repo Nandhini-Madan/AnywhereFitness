@@ -14,8 +14,17 @@ import PrivateRoute from './components/PrivateRoute';
 import ClientPage from './components/ClientPage';
 import Clientsessions from './components/ClientSessions';
 import EditSession from './components/EditSessions';
+import CreateClass from './components/CreateClass';
+import EditClass from './components/EditClass';
+import axios from 'axios';
+
 
 function App() {
+  
+const handleLogout = () => {
+  localStorage.setItem('token', '');
+ // setLoginState(false);
+}
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -32,7 +41,9 @@ function App() {
             <Link to="/" className="nav-link" aria-current="page">Home</Link>
             <Link to="/login" className="nav-link" aria-current="page">Login</Link>
             <Link to="/signUp" className="nav-link" aria-current="page">SignUp</Link>
-            
+            <Nav.Item>
+              <Nav.Link onClick={handleLogout}>logout</Nav.Link>
+            </Nav.Item>
           </Nav>
 
 
@@ -51,14 +62,17 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signUp" component={SignUp} />
-        <PrivateRoute exact path="/Client" component={ClientPage}/>
-        <PrivateRoute exact path="/Instructor" component={Instructor}/>
-        <PrivateRoute exact path="/Clientsessions" component={Clientsessions}/>
-        <PrivateRoute exact path="/Editsessions/:id" component={EditSession}/>
+        <PrivateRoute exact path="/Client" component={ClientPage} />
+        <PrivateRoute exact path="/Instructor" component={Instructor} />
+        <PrivateRoute exact path="/Clientsessions" component={Clientsessions} />
+        <PrivateRoute exact path="/Editsessions/:id" component={EditSession} />
+        <PrivateRoute exact path="/CreateClass" component={CreateClass} />
+        <PrivateRoute exact path="/EditClass/:id" component={EditClass} />
+
 
 
       </Switch>
- 
+
 
 
 
