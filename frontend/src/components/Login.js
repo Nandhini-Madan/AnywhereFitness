@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react';
 import {Form , Button } from "react-bootstrap";
 import * as yup from 'yup';
 import Input from "./Input";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 const Login = (props) => {
@@ -28,20 +27,17 @@ const Login = (props) => {
             loginState.username|| loginState.password){
                 setButtonDisabled(false)
             }
-
     },[loginState,formschema])
 
     const loginSubmit=(e)=>{
         console.log("login",loginState);
-      //  e.preventDefault();
-
         axios.post('http://localhost:5000/api/auth/login',loginState)
-
         .then(res=>{
             console.log("LoginState",res)
             localStorage.setItem('token',res.data.token);
            // props.setLoggedIn(true);
            if(res.data.role==="instructor"){
+
             history.push("/Instructor")
            }
            else{
@@ -80,16 +76,29 @@ const Login = (props) => {
             })
             console.log(loginState);
     }
+    const logout =()=>{
+        console.log("logout stated")
+        axios.get("http://localhost:5000/api/auth/logout")
+        .then(res=>{
+            console.log("logout",res)
+        })
+        .catch(err=>{
+            console.log("error logout",err)
+        })
+    }
     
     return (
         <>
             <Form onSubmit={loginSubmit}>
                  <Input  type="text" placeholder="User Name1" onChange={inputchange} value={loginState.username} name="username" label="User Name" errors={Error}/>
                  <Input  type="password" placeholder="Password" onChange={inputchange} value={loginState.password} name="password" label="Password" errors={Error}/>
-               
                 <Button onClick={loginSubmit}  >
                     Submit
                 </Button>
+                <Button onClick={logout}  >
+                    logout
+                </Button>
+
             </Form>
         </>
     )

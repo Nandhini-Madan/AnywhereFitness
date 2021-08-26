@@ -53,6 +53,7 @@ const CreateClass = () => {
 
             .then(res => {
                 console.log("Result", res)
+                history.push("/Instructor")
             })
             .catch(err => {
                 console.log("error", err)

@@ -15,6 +15,7 @@ import ClientPage from './components/ClientPage';
 import Clientsessions from './components/ClientSessions';
 import EditSession from './components/EditSessions';
 import CreateClass from './components/CreateClass';
+import EditClass from './components/EditClass';
 
 function App() {
   return (
@@ -33,7 +34,9 @@ function App() {
             <Link to="/" className="nav-link" aria-current="page">Home</Link>
             <Link to="/login" className="nav-link" aria-current="page">Login</Link>
             <Link to="/signUp" className="nav-link" aria-current="page">SignUp</Link>
-            
+            <Nav.Item>
+    <Nav.Link href="/home">Active</Nav.Link>
+  </Nav.Item>
           </Nav>
 
 
@@ -57,6 +60,8 @@ function App() {
         <PrivateRoute exact path="/Clientsessions" component={Clientsessions}/>
         <PrivateRoute exact path="/Editsessions/:id" component={EditSession}/>
         <PrivateRoute exact path="/CreateClass" component={CreateClass}/>
+        <PrivateRoute exact path="/EditClass/:id" component={EditClass}/>
+
 
 
       </Switch>
