@@ -7,9 +7,10 @@ module.exports = (req, res, next) => {
  let secret = constant.jwtSecret;
 
   if (token) {
+    console.log("token",token)
     jwt.verify(token, secret, (err, decodedToken) => {
       if (err) {
-        // can't pass
+        // can't pass 
         res.status(401).json({ error: "Access Denied" });
       } else {
         // go next

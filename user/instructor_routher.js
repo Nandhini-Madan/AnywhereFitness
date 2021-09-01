@@ -3,7 +3,9 @@ let router = express.Router();
 const db = require("../model/all_model");
 
 router.get("/classes", (req, res) => {
+
   let subject = req.jwt.subject;
+  console.log("hi",subject)
   db.getAllClassesByInstructorId(subject).then((classes) => {
     if (classes.length < 1) {
         res.status(404).json({ message: "no classes found" });

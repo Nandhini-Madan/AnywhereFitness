@@ -15,7 +15,9 @@ router.get("/classes", (req, res) => {
 });
 
 router.post("/classes/sessions", (req, res) => {
+  
   let newSession = req.body;
+  console.log(req.body);
   let userID = req.jwt.subject;
   let timeStamp = new Date().toString().split(" ").slice(0, 5).join(" ");
   newSession.users_id = userID;
@@ -93,6 +95,7 @@ router.get("/classes/:id", (req, res) => {
 
 router.delete("/classes/sessions/:id", (req, res) => {
   let { id } = req.params;
+  console.log("param",req.params)
   let userID = req.jwt.subject;
   db.getSessionById(id)
     .then((session) => {
