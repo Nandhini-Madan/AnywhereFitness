@@ -71,8 +71,9 @@ const handleLogout = () => {
 
 
 
+
+
       </Switch>
-=======
   <Navbar.Brand href="#">Anywhere Fitness</Navbar.Brand>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
@@ -83,6 +84,7 @@ const handleLogout = () => {
     >
       <Nav.Link href="#action1">Home</Nav.Link>
       <Nav.Link href="#action2">Login</Nav.Link>
+
       
       <Nav.Link href="#" >
         classes
