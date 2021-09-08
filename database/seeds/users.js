@@ -1,4 +1,4 @@
-
+const hashedPassword="$2a$08$PEt5TLgB6RU6e5eVeDZK4.Tgv27vSWJiIOoSyy5wVAErWUNKO/inC"// real password= abc1234!
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex('users').del()
@@ -10,14 +10,14 @@ exports.seed = function(knex) {
       last_name: "Daniel",
       email: "Eldana@fit.com",
       username: "eldana1",
-      password: "okeldana"},
+      password: hashedPassword},
 
         { role: 1,
       first_name: "Kasi",
       last_name: "hope",
       email: "kasi@fit.com",
       username: "kasi",
-      password: "okkasi1"},
+      password: hashedPassword},
 
 
         {role: 2,
@@ -25,7 +25,7 @@ exports.seed = function(knex) {
       last_name: "Daniel",
       email: "delina@fit.com",
       username: "Delina",
-      password: "okdelina"
+      password: hashedPassword
       },
 
  {role: 1,
@@ -33,7 +33,7 @@ exports.seed = function(knex) {
       last_name: "Isaac",
       email: "daniel@fit.com",
       username: "Daniel",
-      password: "okdaniel"
+      password: hashedPassword
       },
 
       ]);
