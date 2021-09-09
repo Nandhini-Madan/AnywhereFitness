@@ -1,8 +1,11 @@
 
 # heroku
 ````
-https://anywherefitbe.herokuapp.com
+https://anywherefitness21.herokuapp.com/
+
 ````
+# Netlify
+https://anywherefitness12.netlify.app/
 
 # Auth Router
 ````
