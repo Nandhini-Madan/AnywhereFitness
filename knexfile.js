@@ -6,9 +6,9 @@ module.exports = {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     migrations: {
-      directory: './migrations',
+      directory: './database/migrations',
     },
-    seeds: {directory: './seeds'},
+    seeds: {directory: './database/seeds'},
   },
   testing: {
     client: 'pg',
@@ -28,7 +28,7 @@ module.exports = {
     migrations: {
       directory: './database/migrations',
     },
-    seeds: {directory: './seeds'},
+    seeds: {directory: './database/seeds'},
     pool: {
       min: 2,
       max: 10
