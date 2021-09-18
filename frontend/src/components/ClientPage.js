@@ -39,7 +39,7 @@ const ClientPage = () => {
   }
 
   useEffect(() => {
-    axiosWithAuth().get('http://localhost:5000/api/client/classes')
+    axiosWithAuth().get('https://anywherefitness21.herokuapp.com/api/client/classes')
       .then(res => {
         console.log(res.data, "classes")
         setAllClass(res.data.data)

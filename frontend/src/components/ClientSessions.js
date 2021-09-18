@@ -33,7 +33,7 @@ const Clientsessions = () => {
     const deleteclass = (id) => {
         console.log("delete", id)
         const sessionID=id
-        axiosWithAuth().delete(`http://localhost:5000/api/client/classes/sessions/${sessionID}`)
+        axiosWithAuth().delete(`https://anywherefitness21.herokuapp.com/api/client/classes/sessions/${sessionID}`)
             .then(res => {
                 console.log("Successfully deleted", res)
                 getSessions()

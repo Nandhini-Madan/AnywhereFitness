@@ -31,7 +31,7 @@ const Login = (props) => {
 
     const loginSubmit=(e)=>{
         console.log("login",loginState);
-        axios.post('http://localhost:5000/api/auth/login',loginState)
+        axios.post('https://anywherefitness21.herokuapp.com/api/auth/login',loginState)
         .then(res=>{
             console.log("LoginState",res)
             localStorage.setItem('token',res.data.token);

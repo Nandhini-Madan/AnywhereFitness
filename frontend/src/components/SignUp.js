@@ -78,9 +78,9 @@ const SignUp = () => {
         event.preventDefault();
         console.log("Data signup form", formState);
         // if(formState.first_name||formState.last_name)
-        axios.post("http://localhost:5000/api/auth/register", formState)
+        axios.post("https://anywherefitness21.herokuapp.com/api/auth/register", formState)
             .then(res => {
-                //After posting the data what kind of response we are getting 
+                
                 console.log(res, "signup")
                 history.push("/login")
             })

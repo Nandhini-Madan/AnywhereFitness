@@ -49,7 +49,7 @@ const CreateClass = () => {
     const submitForm = event => {
       //  event.preventDefault();
         console.log("create")
-        axiosWithAuth().post("http://localhost:5000/api/instructor/classes", formState)
+        axiosWithAuth().post("https://anywherefitness21.herokuapp.com/api/instructor/classes", formState)
 
             .then(res => {
                 console.log("Result", res)

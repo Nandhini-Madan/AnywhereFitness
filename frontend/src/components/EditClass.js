@@ -35,7 +35,7 @@ const CreateClass = () => {
         max_class: yup.string().required("Enter max class in number")
     })
     useEffect(()=>{
-        axiosWithAuth().get(`http://localhost:5000/api/instructor/classes/${id}`)
+        axiosWithAuth().get(`https://anywherefitness21.herokuapp.com/api/instructor/classes/${id}`)
         .then(res=>{
             console.log("get",res.data.class)
             setFormState(res.data.class)
@@ -61,7 +61,7 @@ const CreateClass = () => {
     const submitForm = () => {
       //  event.preventDefault();
         console.log("create",formState)
-        axiosWithAuth().put(`http://localhost:5000/api/instructor/classes/${id}`, formState)
+        axiosWithAuth().put(`https://anywherefitness21.herokuapp.com/api/instructor/classes/${id}`, formState)
             .then(res => {
                 console.log("Result update", res)
                 history.push("/Instructor")

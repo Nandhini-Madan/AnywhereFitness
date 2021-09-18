@@ -18,7 +18,7 @@ const Instructor = () => {
     // const [message, SetMessage] = useState(defaultState)
     const getClass=()=>{
         console.log("getclass")
-        axiosWithAuth().get("http://localhost:5000/api/instructor/classes")
+        axiosWithAuth().get("https://anywherefitness21.herokuapp.com/api/instructor/classes")
         .then(res => {
             console.log(res, "classes")
             setAllClass(res.data.data)
