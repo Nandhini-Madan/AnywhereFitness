@@ -4,7 +4,7 @@ import { Row, Col, Card, Button } from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
 import { useHistory } from "react-router";
 const Clientsessions = () => {
-    let history = useHistory()
+   /*
     const defaultState = {
         name: "",
         type: "",
@@ -13,7 +13,7 @@ const Clientsessions = () => {
         intensity: "",
         location: "",
         max_class: ""
-    }
+    }*/
     const [mySessions, setMySessions] = useState([])
     const getSessions=()=>{
         axiosWithAuth().get("http://localhost:5000/api/client/classes/sessions")

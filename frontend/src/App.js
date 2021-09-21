@@ -17,7 +17,7 @@ import EditSession from './components/EditSessions';
 import CreateClass from './components/CreateClass';
 import EditClass from './components/EditClass';
 import SearchClass from './components/SearchClass';
-import axios from 'axios';
+
 
 
 function App() {

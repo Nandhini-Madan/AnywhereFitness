@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const EditSession = () => {
-    const [Session, setSession] = useState([])
+   // const [Session, setSession] = useState([])
     const { id } = useParams()
     useEffect(() => {
         axiosWithAuth().get("https://anywherefitness21.herokuapp.com/api/client/classes/sessions", {id})

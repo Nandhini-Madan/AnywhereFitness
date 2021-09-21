@@ -6,14 +6,14 @@ import { useHistory } from "react-router-dom";
 
 const Instructor = () => {
     let history = useHistory()
-    const defaultState = {
+   /* const defaultState = {
         subject: "",
         first_name: "",
         location: "",
         start_time: "",
         id: ""
 
-    }
+    }*/
     const [allclass, setAllClass] = useState([])
     // const [message, SetMessage] = useState(defaultState)
     const getClass=()=>{
