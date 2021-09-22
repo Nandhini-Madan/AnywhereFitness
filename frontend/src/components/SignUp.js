@@ -74,7 +74,7 @@ const SignUp = () => {
     }
     //submit form function
     const submitForm = event => {
-        console.log("submit")
+        console.log("submit nandhini")
         event.preventDefault();
         console.log("Data signup form", formState);
         // if(formState.first_name||formState.last_name)
