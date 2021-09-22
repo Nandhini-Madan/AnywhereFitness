@@ -16,7 +16,7 @@ const Clientsessions = () => {
     }*/
     const [mySessions, setMySessions] = useState([])
     const getSessions=()=>{
-        axiosWithAuth().get("http://localhost:5000/api/client/classes/sessions")
+        axiosWithAuth().get("https://anywherefitness21.herokuapp.com/api/client/classes/sessions")
         .then(res => {
             console.log(res.data)
             setMySessions(res.data.classes)
