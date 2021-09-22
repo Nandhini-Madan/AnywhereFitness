@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
-import { useHistory } from "react-router";
+
 const Clientsessions = () => {
    /*
     const defaultState = {

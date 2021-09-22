@@ -3,6 +3,7 @@ import react from "react"
 const SearchClass=(props)=>{
     return(
         <>
+        <h1>Search</h1>
         </>
     )
 }

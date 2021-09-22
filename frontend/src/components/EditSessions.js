@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -15,7 +15,7 @@ const EditSession = () => {
             console.log(err)
         })
 
-    }, [])
+    }, [id])
     return (
         <>
             <h1>Edit Session</h1>

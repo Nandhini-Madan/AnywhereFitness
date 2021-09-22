@@ -20,12 +20,13 @@ const Login = (props) => {
     })
 
     useEffect(()=>{
+        console.log("login")
         if (loginState.username && loginState.password){
-            setButtonDisabled(true)
+            setButtonDisabled(false)
         }
         else if(
             loginState.username|| loginState.password){
-                setButtonDisabled(false)
+                setButtonDisabled(true)
             }
     },[loginState,formschema])
 
@@ -92,10 +93,10 @@ const Login = (props) => {
             <Form onSubmit={loginSubmit}>
                  <Input  type="text" placeholder="User Name1" onChange={inputchange} value={loginState.username} name="username" label="User Name" errors={Error}/>
                  <Input  type="password" placeholder="Password" onChange={inputchange} value={loginState.password} name="password" label="Password" errors={Error}/>
-                <Button onClick={loginSubmit}  >
+                <Button onClick={loginSubmit} disabled={buttonDisabled}  >
                     Submit
                 </Button>
-                <Button onClick={logout}  >
+                <Button onClick={logout} >
                     logout
                 </Button>
 
