@@ -22,7 +22,7 @@ const ClientPage = () => {
     console.log("e0", id)
     const classes_id = id
     console.log(classes_id, "classses id")
-    axiosWithAuth().post("http://localhost:5000/api/client/classes/sessions", { classes_id })
+    axiosWithAuth().post("https://anywherefitness21.herokuapp.com/api/client/classes/sessions", { classes_id })
       .then(res => {
         if (res) {
           console.log("Succesffully added")

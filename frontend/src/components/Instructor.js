@@ -46,7 +46,7 @@ const Instructor = () => {
     }
     const deleteClass=(id)=>{
         console.log("delete",id)
-        axiosWithAuth().delete(`http://localhost:5000/api/instructor/classes/${id}`)
+        axiosWithAuth().delete(`https://anywherefitness21.herokuapp.com/api/instructor/classes/${id}`)
         .then(res=>{
             console.log("res")
            // history.push("/Instructor")
