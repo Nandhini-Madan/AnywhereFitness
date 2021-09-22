@@ -21,7 +21,7 @@ const CreateClass = () => {
     }
 
     const [formState, setFormState] = useState(defaultState)
-    const [Error, SetError] = useState({ ...defaultState })
+    const [Error] = useState({ ...defaultState })
     const [disabledButton, setDisabledButton] = useState(true)
 
     const formSchema = yup.object().shape({

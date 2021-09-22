@@ -40,6 +40,8 @@ const handleLogout = () => {
           >
 
             <Link to="/" className="nav-link" aria-current="page">Home</Link>
+           
+          
             <Link to="/login" className="nav-link" aria-current="page">Login</Link>
             <Link to="/signUp" className="nav-link" aria-current="page">SignUp</Link>
             <Nav.Item>
