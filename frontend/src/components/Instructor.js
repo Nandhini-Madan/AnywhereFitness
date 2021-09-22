@@ -6,19 +6,19 @@ import { useHistory } from "react-router-dom";
 
 const Instructor = () => {
     let history = useHistory()
-    const defaultState = {
+   /* const defaultState = {
         subject: "",
         first_name: "",
         location: "",
         start_time: "",
         id: ""
 
-    }
+    }*/
     const [allclass, setAllClass] = useState([])
     // const [message, SetMessage] = useState(defaultState)
     const getClass=()=>{
         console.log("getclass")
-        axiosWithAuth().get("http://localhost:5000/api/instructor/classes")
+        axiosWithAuth().get("https://anywherefitness21.herokuapp.com/api/instructor/classes")
         .then(res => {
             console.log(res, "classes")
             setAllClass(res.data.data)

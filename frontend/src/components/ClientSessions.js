@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
-import { useHistory } from "react-router";
+
 const Clientsessions = () => {
-    let history = useHistory()
+   /*
     const defaultState = {
         name: "",
         type: "",
@@ -13,7 +13,7 @@ const Clientsessions = () => {
         intensity: "",
         location: "",
         max_class: ""
-    }
+    }*/
     const [mySessions, setMySessions] = useState([])
     const getSessions=()=>{
         axiosWithAuth().get("http://localhost:5000/api/client/classes/sessions")
@@ -33,7 +33,7 @@ const Clientsessions = () => {
     const deleteclass = (id) => {
         console.log("delete", id)
         const sessionID=id
-        axiosWithAuth().delete(`http://localhost:5000/api/client/classes/sessions/${sessionID}`)
+        axiosWithAuth().delete(`https://anywherefitness21.herokuapp.com/api/client/classes/sessions/${sessionID}`)
             .then(res => {
                 console.log("Successfully deleted", res)
                 getSessions()
