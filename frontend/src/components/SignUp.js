@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Input from "./Input";
-
+import emailjs from 'emailjs-com';
 const SignUp = () => {
     ////The history.push () function belongs to react-router-dom and used to move from the current page to another one
     const history = useHistory();
@@ -23,7 +23,7 @@ const SignUp = () => {
     }
     // Validation Form
     const formSchema = yup.object().shape({
-        role:yup.string().notRequired(),
+        role: yup.string().notRequired(),
         first_name: yup.string().required("Please Enter Your First Name").min(2, "This is not your first name"),
         last_name: yup.string().required("Please Enter Your Last Name").min(2, "This is not your last name"),
         username: yup.string().required("Please Enter your Username").min(2, "This is not your Username"),
@@ -80,7 +80,28 @@ const SignUp = () => {
         // if(formState.first_name||formState.last_name)
         axios.post("https://anywherefitness21.herokuapp.com/api/auth/register", formState)
             .then(res => {
+                var templateParams={
+                    name:formState.first_name,
+                    email:formState.email,
+                    message:"Please select the class from the below link,https://anywherefitness12.netlify.app/login"
+                }
+                if(formState.role===2){
+                    console.log("role2")
+                  templateParams.message="Please select the class from the below link,https://anywherefitness12.netlify.app/login"
+                }
+                else{
+                    console.log("instruct")
+                 templateParams.message= "Please add class for your students from the below link, https://anywherefitness12.netlify.app/login"
+                }
                 
+                emailjs.send('service_fnytyi6', 'Signup', templateParams,"user_qxHOVGLT96ZhOfZkZZN5s")
+                    .then(function (response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                    });
+
+
                 console.log(res, "signup")
                 history.push("/login")
             })
@@ -111,16 +132,16 @@ const SignUp = () => {
                                 label="Student"
                                 name="role"
                                 id="formHorizontalRadios1"
-                               onChange={inputchange}
-                              value={parseInt(2)}
+                                onChange={inputchange}
+                                value={parseInt(2)}
                             />
                             <Form.Check
                                 type="radio"
                                 label="Instructor"
                                 name="role"
                                 id="formHorizontalRadios2"
-                               value={parseInt(1)}
-                               onChange={inputchange}
+                                value={parseInt(1)}
+                                onChange={inputchange}
                             />
 
                         </Col>

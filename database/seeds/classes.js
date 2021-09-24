@@ -6,7 +6,7 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('classes').insert([
         {
-      instructor_id: 1,
+      instructor_id: 2,
       name: "Yoga",
       type: "Tantra",
       start_time: "10/1/2021 7pm",
@@ -39,7 +39,7 @@ exports.seed = function(knex) {
     },
 
      {
-      instructor_id: 1,
+      instructor_id: 4,
       name: "Dance",
       type: "Ballet Dance",
       start_time: "5/5/2021 6pm",
