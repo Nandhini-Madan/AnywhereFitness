@@ -85,7 +85,9 @@ function App() {
       </Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={<Login setLoggedIn={setLoggedIn} />}/>
+        <Route path="/login">
+            <Login setLoggedIn={setLoggedIn}/>
+          </Route>
         <Route exact path="/signUp" component={SignUp} />
         <PrivateRoute exact path="/Client" component={ClientPage} />
         <PrivateRoute exact path="/Instructor" component={Instructor} />
