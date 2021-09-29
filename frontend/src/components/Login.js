@@ -36,7 +36,7 @@ const Login = (props) => {
         .then(res=>{
             console.log("LoginState",res)
             localStorage.setItem('token',res.data.token);
-           // props.setLoggedIn(true);
+           // props.setLoggedIn(res.data.token);
            if(res.data.role==="instructor"){
 
             history.push("/Instructor")
@@ -79,13 +79,10 @@ const Login = (props) => {
     }
     const logout =()=>{
         console.log("logout stated")
-        axios.get("http://localhost:5000/api/auth/logout")
-        .then(res=>{
-            console.log("logout",res)
-        })
-        .catch(err=>{
-            console.log("error logout",err)
-        })
+     const  user=localStorage.setItem("token","")
+        props.setLoggedIn(user)
+        history.push("/")
+        
     }
     
     return (

@@ -30,8 +30,11 @@
   color: #61dafb;
 }
 
-.img-thumbnail{
-  border-radius: 50%;
+.carousel {
+  position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 2rem;
 }
 
 @keyframes App-logo-spin {
@@ -63,9 +66,9 @@ body {
 padding-left: 1rem;
 }
 form{
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+ 
 }
 .form-control{
   width:75%;
