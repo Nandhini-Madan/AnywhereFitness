@@ -4,8 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Button, Form, FormControl } from 'react-bootstrap';
-import { Link, Switch, Route } from "react-router-dom";
+import { Switch, Route ,Link} from "react-router-dom";
 import Login from "./components/Login";
 import Home from './components/Home';
 import SignUp from './components/SignUp';
@@ -17,15 +16,29 @@ import EditSession from './components/EditSessions';
 import CreateClass from './components/CreateClass';
 import EditClass from './components/EditClass';
 import SearchClass from './components/SearchClass';
-
+import {  useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+//import NavHeader from "./components/NavHeader";
+import { Button, Form, FormControl } from 'react-bootstrap';
 
 
 function App() {
+
+  const [loggedIn,setLoggedIn] = useState(localStorage.getItem("token"))
+
   
-const handleLogout = () => {
-  localStorage.setItem('token', '');
- // setLoginState(false);
-}
+  let history=useHistory()
+  useEffect(()=>{
+    setLoggedIn(loggedIn)
+  },[loggedIn])
+  const handleLogout = () => {
+    const user = localStorage.clear()
+   setLoggedIn(user)
+    console.log("token logout", loggedIn)
+   // window.location.reload()
+    history.push("/")
+  }
+
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -35,35 +48,44 @@ const handleLogout = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="mr-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
+
             navbarScroll
           >
-
-            <Link to="/" className="nav-link" aria-current="page">Home</Link>
-           
-          
-            <Link to="/login" className="nav-link" aria-current="page">Login</Link>
-            <Link to="/signUp" className="nav-link" aria-current="page">SignUp</Link>
-            <Nav.Item>
-              <Nav.Link onClick={handleLogout}>logout</Nav.Link>
-            </Nav.Item>
+            {
+              // console.log("token still", loggedIn)
+             loggedIn?
+                <>
+                {console.log("token still",loggedIn)}
+                 <Link to="/" className="nav-link" aria-current="page">Home</Link>
+                   <Nav.Item>
+                    <Nav.Link onClick={handleLogout}>logout</Nav.Link>
+                  </Nav.Item>
+                  <Form className="d-flex">
+                    <FormControl
+                      type="search"
+                      placeholder="Search"
+                      className="mr-2"
+                      aria-label="Search"
+                    />
+                    <Button variant="outline-success">Search</Button>
+                  </Form>
+                </>
+                :
+                <>
+                {console.log("token still", loggedIn)}
+                  <Link to="/" className="nav-link" aria-current="page">Home</Link>
+                  <Link to="/login" className="nav-link" aria-current="page">Login</Link>
+                  <Link to="/signUp" className="nav-link" aria-current="page">SignUp</Link>
+                </>
+            }
           </Nav>
 
 
-          <Form className="d-flex">
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="mr-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login" component={<Login setLoggedIn={setLoggedIn} />}/>
         <Route exact path="/signUp" component={SignUp} />
         <PrivateRoute exact path="/Client" component={ClientPage} />
         <PrivateRoute exact path="/Instructor" component={Instructor} />
