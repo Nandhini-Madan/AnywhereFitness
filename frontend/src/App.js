@@ -67,8 +67,11 @@ function App() {
                       className="mr-2"
                       aria-label="Search"
                     />
-                    <Button variant="outline-success">Search</Button>
+                    <Button variant="primary">Search</Button>
                   </Form>
+                  <div className="cart">
+                    My Cart
+                    </div>
                 </>
                 :
                 <>

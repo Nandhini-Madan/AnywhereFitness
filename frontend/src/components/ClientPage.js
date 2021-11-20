@@ -35,7 +35,7 @@ const ClientPage = () => {
       })
   }
   const MySessions = () => {
-       history.push("/Clientsessions")
+    history.push("/Clientsessions")
   }
 
   useEffect(() => {
@@ -56,32 +56,36 @@ const ClientPage = () => {
 
   return (
     <>
-
+      <div className="ClientName">
       <h4>Hi {message.first_name}</h4>
-      <h2>Available Classes</h2>
+      </div>
+      
+      <div className="clientHeading">Available Classes</div>
       <br></br>
-      <Row xs={1} md={2} className="g-4">
-        {allclass.map(((clientClass) => (
-          <Col key={clientClass.name} >
+      <div className="classList">
+        <Row xs={1} md={2} className="g-4 " >
+          {allclass.map(((clientClass) => (
+            <Col key={clientClass.name} >
 
-            <Card   >
-              <Card.Img variant="top" src={fitness} />
-              <Card.Body>
-                <Card.Title>Name:{clientClass.name}</Card.Title>
-                <Card.Text>
-                  Location:{clientClass.location}
-                </Card.Text>
-                <Card.Text>
-                  Start Time: {clientClass.start_time}
-                </Card.Text>
-                <Button variant="primary" onClick={viewClass.bind(this, clientClass.id)}> Add</Button>
-                
-              </Card.Body>
-            </Card>
-          </Col>
-        )))}
-        <Button variant="primary" onClick={MySessions}> My Session</Button>
-      </Row>
+              <Card >
+                <Card.Img variant="top" src={fitness} />
+                <Card.Body>
+                  <Card.Title>Name: {clientClass.name}</Card.Title>
+                  <Card.Text>
+                    Location: {clientClass.location}
+                  </Card.Text>
+                  <Card.Text>
+                    Start Time: {clientClass.start_time}
+                  </Card.Text>
+                  <Button variant="primary" onClick={viewClass.bind(this, clientClass.id)}> Add</Button>
+
+                </Card.Body>
+              </Card>
+            </Col>
+          )))}
+          <Button variant="primary" onClick={MySessions}> My Session</Button>
+        </Row>
+      </div>
     </>
   )
 }

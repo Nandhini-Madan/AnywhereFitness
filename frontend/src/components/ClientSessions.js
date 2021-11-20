@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import fitness from "../asserts/fitness1.jpg"
+import {useHistory} from "react-router-dom";
+
 
 const Clientsessions = () => {
    /*
@@ -14,6 +16,7 @@ const Clientsessions = () => {
         location: "",
         max_class: ""
     }*/
+    let history=useHistory()
     const [mySessions, setMySessions] = useState([])
     const getSessions=()=>{
         axiosWithAuth().get("https://anywherefitness21.herokuapp.com/api/client/classes/sessions")
@@ -47,6 +50,10 @@ const Clientsessions = () => {
         console.log("edit",id)
         history.push(`/editSessions/${id}`)
     }*/
+    const backToClass=()=>{
+        history.push("/Client")
+    }
+
     return (
         <>
             <h1>My sessions</h1>
@@ -67,7 +74,9 @@ const Clientsessions = () => {
                                 <Card.Text>
                                     Start Time: {mySessions.start_time}
                                 </Card.Text>
-                                <Button variant="primary" onClick={deleteclass.bind(this, mySessions.sessionID)}> Delete</Button>                            </Card.Body>
+                                <Button variant="primary" className="danger" onClick={deleteclass.bind(this, mySessions.sessionID)}> Delete</Button>
+                                <Button onClick={backToClass}>Back</Button>  
+                              </Card.Body>
                         </Card>
                     </Col>
                 )))}
