@@ -113,6 +113,7 @@ const SignUp = () => {
 
     return (
         <>
+        <div></div>
             <Form onSubmit={submitForm} >
 
                 <Input type="text" placeholder="First Name" onChange={inputchange} value={formState.first_name} name="first_name" label="First Name" errors={Error} />
