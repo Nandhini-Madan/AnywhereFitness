@@ -80,21 +80,21 @@ const SignUp = () => {
         // if(formState.first_name||formState.last_name)
         axios.post("https://anywherefitness21.herokuapp.com/api/auth/register", formState)
             .then(res => {
-                var templateParams={
-                    name:formState.first_name,
-                    email:formState.email,
-                    message:"Please select the class from the below link,https://anywherefitness12.netlify.app/login"
+                var templateParams = {
+                    name: formState.first_name,
+                    email: formState.email,
+                    message: "Please select the class from the below link,https://anywherefitness12.netlify.app/login"
                 }
-                if(formState.role===2){
+                if (formState.role === 2) {
                     console.log("role2")
-                  templateParams.message="Please select the class from the below link,https://anywherefitness12.netlify.app/login"
+                    templateParams.message = "Please select the class from the below link,https://anywherefitness12.netlify.app/login"
                 }
-                else{
+                else {
                     console.log("instruct")
-                 templateParams.message= "Please add class for your students from the below link, https://anywherefitness12.netlify.app/login"
+                    templateParams.message = "Please add class for your students from the below link, https://anywherefitness12.netlify.app/login"
                 }
-                
-                emailjs.send('service_fnytyi6', 'Signup', templateParams,"user_qxHOVGLT96ZhOfZkZZN5s")
+
+                emailjs.send('service_fnytyi6', 'Signup', templateParams, "user_qxHOVGLT96ZhOfZkZZN5s")
                     .then(function (response) {
                         console.log('SUCCESS!', response.status, response.text);
                     }, function (error) {
@@ -113,49 +113,59 @@ const SignUp = () => {
 
     return (
         <>
-        <div></div>
-            <Form onSubmit={submitForm} >
+            <br></br>
+            <div className="sign-up-title">
+                Anywhere Fitness Sign Up
+            </div>
 
-                <Input type="text" placeholder="First Name" onChange={inputchange} value={formState.first_name} name="first_name" label="First Name" errors={Error} />
-                <Input type="text" placeholder="Last Name" onChange={inputchange} value={formState.last_name} name="last_name" label="Last Name" errors={Error} />
-                <Input type="text" placeholder="User Name" onChange={inputchange} value={formState.username} name="username" label="User Name" errors={Error} />
-                <Input type="email" placeholder="Email" onChange={inputchange} value={formState.email} name="email" label="Email" errors={Error} />
-                <Input type="password" placeholder="Password" onChange={inputchange} value={formState.password} name="password" label="Password" errors={Error} />
-                <fieldset>
+            <div className="sign-up">
+                <div>
+                Create your account now
+                </div>
+                <br></br>
+                <Form onSubmit={submitForm} >
+
+                    <Input type="text" placeholder="First Name" onChange={inputchange} value={formState.first_name} name="first_name" label="First Name" errors={Error} />
+                    <Input type="text" placeholder="Last Name" onChange={inputchange} value={formState.last_name} name="last_name" label="Last Name" errors={Error} />
+                    <Input type="text" placeholder="User Name" onChange={inputchange} value={formState.username} name="username" label="User Name" errors={Error} />
+                    <Input type="email" placeholder="Email" onChange={inputchange} value={formState.email} name="email" label="Email" errors={Error} />
+                    <Input type="password" placeholder="Password" onChange={inputchange} value={formState.password} name="password" label="Password" errors={Error} />
+                    <fieldset>
+                        <Form.Group as={Row} className="mb-3">
+                            <Form.Label as="legend" column sm={2}>
+                                Select
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Check
+                                    defaultChecked
+                                    type="radio"
+                                    label="Student"
+                                    name="role"
+                                    id="formHorizontalRadios1"
+                                    onChange={inputchange}
+                                    value={parseInt(2)}
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="Instructor"
+                                    name="role"
+                                    id="formHorizontalRadios2"
+                                    value={parseInt(1)}
+                                    onChange={inputchange}
+                                />
+
+                            </Col>
+                        </Form.Group>
+                    </fieldset>
+
+
                     <Form.Group as={Row} className="mb-3">
-                        <Form.Label as="legend" column sm={2}>
-                            Select
-                        </Form.Label>
-                        <Col sm={10}>
-                            <Form.Check
-                                defaultChecked
-                                type="radio"
-                                label="Student"
-                                name="role"
-                                id="formHorizontalRadios1"
-                                onChange={inputchange}
-                                value={parseInt(2)}
-                            />
-                            <Form.Check
-                                type="radio"
-                                label="Instructor"
-                                name="role"
-                                id="formHorizontalRadios2"
-                                value={parseInt(1)}
-                                onChange={inputchange}
-                            />
-
+                        <Col sm={{ span: 10, offset: 2 }}>
+                            <Button type="submit" disabled={disabledButton} >Sign up</Button>
                         </Col>
                     </Form.Group>
-                </fieldset>
-
-
-                <Form.Group as={Row} className="mb-3">
-                    <Col sm={{ span: 10, offset: 2 }}>
-                        <Button type="submit" disabled={disabledButton} >Sign up</Button>
-                    </Col>
-                </Form.Group>
-            </Form>
+                </Form>
+            </div>
         </>
     )
 }

@@ -4,7 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Switch, Route ,Link} from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Home from './components/Home';
 import SignUp from './components/SignUp';
@@ -16,7 +16,7 @@ import EditSession from './components/EditSessions';
 import CreateClass from './components/CreateClass';
 import EditClass from './components/EditClass';
 import SearchClass from './components/SearchClass';
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 //import NavHeader from "./components/NavHeader";
 import { Button, Form, FormControl } from 'react-bootstrap';
@@ -24,18 +24,18 @@ import { Button, Form, FormControl } from 'react-bootstrap';
 
 function App() {
 
-  const [loggedIn,setLoggedIn] = useState(localStorage.getItem("token"))
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"))
 
-  
-  let history=useHistory()
-  useEffect(()=>{
+
+  let history = useHistory()
+  useEffect(() => {
     setLoggedIn(loggedIn)
-  },[loggedIn])
+  }, [loggedIn])
   const handleLogout = () => {
     const user = localStorage.clear()
-   setLoggedIn(user)
+    setLoggedIn(user)
     console.log("token logout", loggedIn)
-   // window.location.reload()
+    // window.location.reload()
     history.push("/")
   }
 
@@ -53,11 +53,11 @@ function App() {
           >
             {
               // console.log("token still", loggedIn)
-             loggedIn?
+              loggedIn ?
                 <>
-                {console.log("token still",loggedIn)}
-                 <Link to="/" className="nav-link" aria-current="page">Home</Link>
-                   <Nav.Item>
+                  {console.log("token still", loggedIn)}
+                  <Link to="/" className="nav-link" aria-current="page">Home</Link>
+                  <Nav.Item>
                     <Nav.Link onClick={handleLogout}>logout</Nav.Link>
                   </Nav.Item>
                   <Form className="d-flex">
@@ -71,26 +71,24 @@ function App() {
                   </Form>
                   <div className="cart">
                     My Cart
-                    </div>
+                  </div>
                 </>
                 :
                 <>
-                {console.log("token still", loggedIn)}
+                  {console.log("token still", loggedIn)}
                   <Link to="/" className="nav-link" aria-current="page">Home</Link>
                   <Link to="/login" className="nav-link" aria-current="page">Login</Link>
                   <Link to="/signUp" className="nav-link" aria-current="page">SignUp</Link>
                 </>
             }
           </Nav>
-
-
         </Navbar.Collapse>
       </Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login">
-            <Login setLoggedIn={setLoggedIn}/>
-          </Route>
+          <Login setLoggedIn={setLoggedIn} />
+        </Route>
         <Route exact path="/signUp" component={SignUp} />
         <PrivateRoute exact path="/Client" component={ClientPage} />
         <PrivateRoute exact path="/Instructor" component={Instructor} />
@@ -99,15 +97,8 @@ function App() {
         <PrivateRoute exact path="/CreateClass" component={CreateClass} />
         <PrivateRoute exact path="/EditClass/:id" component={EditClass} />
         <PrivateRoute exact path="/SearchClass" component={SearchClass} />
-
-
-
       </Switch>
-
-
-
-
-      <div className="Footer">
+      <div className="footer">
         <div>
           <p>&copy;{(new Date().getFullYear())} Nandhini Madan | All rights reserved | Terms Of Service | Privacy</p>
         </div>

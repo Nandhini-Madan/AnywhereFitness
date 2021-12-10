@@ -57,6 +57,7 @@ const Clientsessions = () => {
     return (
         <>
             <h1>My sessions</h1>
+            <br></br>
             <Row xs={1} md={2} className="g-4">
                 {mySessions.map(((mySessions) => (
                     <Col key={mySessions.sessionID} >
@@ -81,6 +82,7 @@ const Clientsessions = () => {
                     </Col>
                 )))}
             </Row>
+            <button>Checkout</button>
 
         </>
     )
