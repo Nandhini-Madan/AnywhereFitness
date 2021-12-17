@@ -5,14 +5,12 @@ import fitness from "../asserts/fitness1.jpg"
 import { useHistory } from "react-router-dom";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import PaymentForm from "./PaymentForm";
 
-const stripePublishKey = process.env.REACT_APP_PUBLISHABLE_KEY
+///const stripePublishKey = process.env.REACT_APP_PUBLISHABLE_KEY
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 
 const Clientsessions = () => {
-    console.log("key1", stripePublishKey)
-
-
     let history = useHistory()
     const [mySessions, setMySessions] = useState([])
     const getSessions = () => {
@@ -74,8 +72,13 @@ const Clientsessions = () => {
                     </Col>
                 )))}
             </Row>
-            <button>Checkout</button>
-       </>
+
+
+            <Elements stripe={stripePromise}>
+                <PaymentForm />
+            </Elements>
+
+        </>
 
 
 
