@@ -65,6 +65,10 @@ const Clientsessions = () => {
                                 <Card.Text>
                                     Start Time: {mySessions.start_time}
                                 </Card.Text>
+                                <Card.Text>
+                                    Start Time: 99
+                                </Card.Text>
+
                                 <Button variant="primary" className="danger" onClick={deleteclass.bind(this, mySessions.sessionID)}> Delete</Button>
                                 <Button onClick={backToClass}>Back</Button>
                             </Card.Body>
@@ -77,7 +81,7 @@ const Clientsessions = () => {
             <Elements stripe={stripePromise}>
                 <PaymentForm />
             </Elements>
-
+            <br></br>
         </>
 
 

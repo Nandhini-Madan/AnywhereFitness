@@ -5,6 +5,7 @@ const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const handleSubmit = async (e) => {
+    console.log("payclick")
     e.preventDefault();
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
@@ -23,8 +24,9 @@ const PaymentForm = () => {
       // Backend is not implemented yet, but once there isn’t any errors,
       // you can pass the token and payment data to the backend to complete
       // the charge
+      console.log("click event")
       axios
-        .post("http://localhost:3000/api/stripe/charge", {
+        .post("http://localhost:5000/api/stripe/charge", {
           token: token.id,
           currency: "USD",
           price: 1000, // or 10 pounds (10*100). Stripe charges with the smallest price unit allowed
@@ -43,7 +45,7 @@ const PaymentForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement />
-      <button>PAY</button>
+      <button onClick={handleSubmit}>PAY</button>
     </form>
   );
 };

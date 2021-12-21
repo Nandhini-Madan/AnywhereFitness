@@ -20,7 +20,7 @@ server.use(express.json())
 server.use("/api/auth", authRouter);
 server.use("/api/client",restricted, clientRouter);
 server.use("/api/instructor",restricted,checkRole('instructor'), instructorRouter);
-server.use("",stripeRouter);
+server.use("/api/stripe",stripeRouter);
 server.get("/", (req, res) => {
     res.status(200).json({ message: "API is working -2022" });
 })
