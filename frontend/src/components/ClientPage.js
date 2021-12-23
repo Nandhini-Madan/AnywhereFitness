@@ -57,34 +57,36 @@ const ClientPage = () => {
   return (
     <>
       <div className="ClientName">
-      <h4>Hi {message.first_name}</h4>
+        <h4>Hi {message.first_name}</h4>
       </div>
-      
+
       <div className="clientHeading">Available Classes</div>
       <br></br>
       <div className="classList">
-        <Row xs={1} md={2} className="g-4 " >
-          {allclass.map(((clientClass) => (
-            <Col key={clientClass.name} >
+        {
+          allclass ? <div> <Row xs={1} md={2} className="g-4 " >
+            {allclass.map(((clientClass) => (
+              <Col key={clientClass.name}>
+                <Card >
+                  <Card.Img variant="top" src={fitness} />
+                  <Card.Body>
+                    <Card.Title>Name: {clientClass.name}</Card.Title>
+                    <Card.Text>
+                      Location: {clientClass.location}
+                    </Card.Text>
+                    <Card.Text>
+                      Start Time: {clientClass.start_time}
+                    </Card.Text>
+                    <Button variant="primary" onClick={viewClass.bind(this, clientClass.id)}> Add</Button>
 
-              <Card >
-                <Card.Img variant="top" src={fitness} />
-                <Card.Body>
-                  <Card.Title>Name: {clientClass.name}</Card.Title>
-                  <Card.Text>
-                    Location: {clientClass.location}
-                  </Card.Text>
-                  <Card.Text>
-                    Start Time: {clientClass.start_time}
-                  </Card.Text>
-                  <Button variant="primary" onClick={viewClass.bind(this, clientClass.id)}> Add</Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            )))}
+            <Button variant="primary" onClick={MySessions}> My Session</Button>
+          </Row></div> : <div>No Class available</div>
+        }
 
-                </Card.Body>
-              </Card>
-            </Col>
-          )))}
-          <Button variant="primary" onClick={MySessions}> My Session</Button>
-        </Row>
       </div>
     </>
   )

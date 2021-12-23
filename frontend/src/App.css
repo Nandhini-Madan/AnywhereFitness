@@ -220,3 +220,17 @@ h1.heading {
 .cart{
   float: left;
 }
+
+.sign-up{
+  margin-left: 5%;
+  width: 80%;
+  background-color: lightblue;
+}
+.sign-up-title{
+  text-align: center;
+  text-transform: uppercase;
+  color: blue;
+}
+form{
+  margin-left: 5%;
+}
