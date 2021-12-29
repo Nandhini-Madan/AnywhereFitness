@@ -29,7 +29,7 @@ const PaymentForm = () => {
         .post("http://localhost:5000/api/stripe/charge", {
           token: token.id,
           currency: "USD",
-          price: 1000, // or 10 pounds (10*100). Stripe charges with the smallest price unit allowed
+          price: 10, // or 10 pounds (10*100). Stripe charges with the smallest price unit allowed
         })
         .then((resp) => {
           alert("Your payment was successful");
@@ -43,9 +43,9 @@ const PaymentForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="payment">
       <CardElement />
-      <button onClick={handleSubmit}>PAY</button>
+      <button  disabled={!stripe} onClick={handleSubmit}>PAY</button>
     </form>
   );
 };

@@ -48,6 +48,7 @@ const Clientsessions = () => {
     return (
 
         <>
+         <div className="payment">
             <h1>My sessions</h1>
             <br></br>
             <Row xs={1} md={2} className="g-4">
@@ -77,10 +78,11 @@ const Clientsessions = () => {
                 )))}
             </Row>
 
-
+           
             <Elements stripe={stripePromise}>
                 <PaymentForm />
             </Elements>
+            </div>
             <br></br>
         </>
 
